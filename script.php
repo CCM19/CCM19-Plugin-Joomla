@@ -1,12 +1,12 @@
 <?php /** @noinspection ALL */
 
 /**
- * @package    ccm19
+ * @package    joomlaplugin
  *
- * @author     jona <your@email.com>
- * @copyright  A copyright
+ * @author     Papoo Software & Media GmbH info@ccm19.de
+ * @copyright  Papoo Software & Media GmbH
  * @license    GNU General Public License version 2 or later; see LICENSE.txt
- * @link       http://your.url.com
+ * @link       https://www.ccm19.de/
  */
 
 use Joomla\CMS\Installer\InstallerAdapter;
@@ -18,7 +18,7 @@ defined('_JEXEC') or die;
 /**
  * joomlaplugin script file.
  *
- * @package   ccm19
+ * @package   joomlaplugin
  * @since     1.0.0
  */
 class plg_SystemJoomlapluginInstallerScript

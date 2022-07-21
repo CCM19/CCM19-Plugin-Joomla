@@ -23,7 +23,7 @@
 
 	<!-- Plugin files -->
 	<files>
-		<filename plugin="ccm19">joomlaplugin.php</filename>
+		<filename plugin="joomlaplugin">joomlaplugin.php</filename>
 		<folder>media/js</folder>
 		<folder>language</folder>
 	</files>
