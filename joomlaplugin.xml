@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="plugin" version="3.8" group="system" method="upgrade">
+	<name>PLG_SYSTEM_JOOMLAPLUGIN</name>
+	<creationDate>13.07.22</creationDate>
+	<author>Papoo Software &amp; Media GmbH</author>
+	<authorEmail>info@ccm19.de</authorEmail>
+	<authorUrl>https://papoo-media.de</authorUrl>
+	<copyright>Copyright (C) 2020 Papoo Software &amp; Media GmbH</copyright>
+	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+	<version>1.0</version>
+	<description>PLG_SYSTEM_JOOMLAPLUGIN_XML_DESCRIPTION</description>
+	<namespace	path="src">Joomla\Plugin\System\Jommlaplugin</namespace>
+	<!-- Scripts to run on installation -->
+	<scriptfile>script.php</scriptfile>
+
+	<!-- Language files -->
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_joomlaplugin.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_system_joomlaplugin.sys.ini</language>
+		<language tag="de-DE">de-DE/de-DE.plg_system_joomlaplugin.ini</language>
+		<language tag="de-DE">de-DE/de-DE.plg_system_joomlaplugin.sys.ini</language>
+	</languages>
+
+	<!-- Plugin files -->
+	<files>
+		<filename plugin="ccm19">joomlaplugin.php</filename>
+		<folder>media/js</folder>
+		<folder>language</folder>
+	</files>
+
+	<media folder ="media" destination="plg_system_joomlaplugin">
+		<filename>js/insert.js</filename>
+		<folder>js</folder>
+	</media>
+	<!-- Config parameter -->
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field
+					name="sample"
+					type="textarea"
+					default=""
+					label="PLG_SYSTEM_joomlaplugin_SAMPLE_LABEL"
+					filter="raw"
+				/>
+			</fieldset>
+		</fields>
+	</config>
+
+	<!-- Update servers -->
+	<updateservers>
+		<server type="extension" priority="1" name="joomlaplugin">https://www.example.com/plg_ccm19.xml</server>
+	</updateservers>
+</extension>
