@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension type="plugin" version="3.8" group="system" method="upgrade">
-	<name>PLG_SYSTEM_JOOMLAPLUGIN</name>
+	<name>PLG_SYSTEM_CCM19INTEGRATION</name>
 	<creationDate>13.07.22</creationDate>
 	<author>Papoo Software &amp; Media GmbH</author>
 	<authorEmail>info@ccm19.de</authorEmail>
@@ -8,27 +8,27 @@
 	<copyright>Copyright (C) 2020 Papoo Software &amp; Media GmbH</copyright>
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<version>1.0</version>
-	<description>PLG_SYSTEM_JOOMLAPLUGIN_XML_DESCRIPTION</description>
+	<description>PLG_SYSTEM_CCM19INTEGRATION_XML_DESCRIPTION</description>
 	<namespace	path="src">Joomla\Plugin\System\Jommlaplugin</namespace>
 	<!-- Scripts to run on installation -->
 	<scriptfile>script.php</scriptfile>
 
 	<!-- Language files -->
 	<languages folder="language">
-		<language tag="en-GB">en-GB/en-GB.plg_system_joomlaplugin.ini</language>
-		<language tag="en-GB">en-GB/en-GB.plg_system_joomlaplugin.sys.ini</language>
-		<language tag="de-DE">de-DE/de-DE.plg_system_joomlaplugin.ini</language>
-		<language tag="de-DE">de-DE/de-DE.plg_system_joomlaplugin.sys.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_system_ccm19integration.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_system_ccm19integration.sys.ini</language>
+		<language tag="de-DE">de-DE/de-DE.plg_system_ccm19integration.ini</language>
+		<language tag="de-DE">de-DE/de-DE.plg_system_ccm19integration.sys.ini</language>
 	</languages>
 
 	<!-- Plugin files -->
 	<files>
-		<filename plugin="joomlaplugin">joomlaplugin.php</filename>
+		<filename plugin="ccm19integration">ccm19integration.php</filename>
 		<folder>media/js</folder>
 		<folder>language</folder>
 	</files>
 
-	<media folder ="media" destination="plg_system_joomlaplugin">
+	<media folder ="media" destination="plg_system_ccm19integration">
 		<filename>js/insert.js</filename>
 		<folder>js</folder>
 	</media>
@@ -40,7 +40,7 @@
 					name="sample"
 					type="textarea"
 					default=""
-					label="PLG_SYSTEM_joomlaplugin_SAMPLE_LABEL"
+					label="PLG_SYSTEM_CCM19INTEGRATION_SAMPLE_LABEL"
 					filter="raw"
 				/>
 			</fieldset>
@@ -49,6 +49,6 @@
 
 	<!-- Update servers -->
 	<updateservers>
-		<server type="extension" priority="1" name="joomlaplugin">https://www.example.com/plg_ccm19.xml</server>
+		<server type="extension" priority="1" name="ccm19integration">https://www.example.com/plg_ccm19.xml</server>
 	</updateservers>
 </extension>
