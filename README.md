@@ -1,4 +1,4 @@
-# JoomlaPlugin
+# CCM19 Integration
 English
 
 Plugin to integrate the CCM19 in joomla.
