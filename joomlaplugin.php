@@ -61,9 +61,17 @@ class plgSystemJoomlaplugin extends CMSPlugin
 	 */
 	public function onAfterDispatch()
 	{
+
 		$sample = $this->params->get('sample');
 		$sample = $this->getIntegrationUrl($sample);
-		if( $sample === null){
+        if (!empty(JPluginHelper ::getPlugin('system', 'joomlaplugin') -> id)) {
+            $id = JPluginHelper::getPlugin('system','joomlaplugin')->id;
+        }
+
+        $uri = Uri::getInstance();
+        $current =(int) $uri->getVar('extension_id');
+
+		if( $sample === null && ($current === $id)){
 
 			JFactory::getApplication()->enqueueMessage(JText::_('PLG_SYSTEM_JOOMLAPLUGIN_INVALID_SNIPPET'), 'error');
 
