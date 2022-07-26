@@ -1,7 +1,7 @@
 <?php /** @noinspection ALL */
 
 /**
- * @package    joomlaplugin
+ * @package    ccm19integration
  *
  * @author     Papoo Software & Media GmbH info@ccm19.de
  * @copyright  Papoo Software & Media GmbH
@@ -16,12 +16,12 @@ use Joomla\CMS\Log\Log;
 defined('_JEXEC') or die;
 
 /**
- * joomlaplugin script file.
+ * ccm19integration script file.
  *
- * @package   joomlaplugin
+ * @package   ccm19integration
  * @since     1.0.0
  */
-class plg_SystemJoomlapluginInstallerScript
+class plg_SystemCcm19integrationInstallerScript
 {
 	/**
 	 * Script for Component
@@ -50,7 +50,7 @@ class plg_SystemJoomlapluginInstallerScript
 	 */
 	public function install($parent): bool
 	{
-		echo Text ::_('PLG_JOOMLAPLUGIN_INSTALLSCRIPT_INSTALL');
+		echo Text ::_('PLG_CCM19INTEGRATION_INSTALLSCRIPT_INSTALL');
 
 		return true;
 	}
@@ -66,7 +66,7 @@ class plg_SystemJoomlapluginInstallerScript
 	 */
 	public function uninstall($parent): bool
 	{
-		echo Text ::_('PLG_JOOMLAPLUGIN_INSTALLERSCRIPT_UNINSTALL');
+		echo Text ::_('PLG_CCM19INTEGRATION_INSTALLERSCRIPT_UNINSTALL');
 
 		return true;
 	}
@@ -82,7 +82,7 @@ class plg_SystemJoomlapluginInstallerScript
 	 */
 	public function update($parent): bool
 	{
-		echo Text ::_('PLG_JOOMLAPLUGIN_INSTALLERSCRIPT_UPDATE');
+		echo Text ::_('PLG_CCM19INTEGRATION_INSTALLERSCRIPT_UPDATE');
 
 		return true;
 	}
@@ -128,7 +128,7 @@ class plg_SystemJoomlapluginInstallerScript
 				return false;
 			}
 		}
-		echo Text ::_('PLG_JOOMLAPLUGIN_INSTALLERSCRIPT_PREFLIGHT');
+		echo Text ::_('PLG_CCM19INTEGRATION_INSTALLERSCRIPT_PREFLIGHT');
 
 		return true;
 	}
@@ -146,7 +146,7 @@ class plg_SystemJoomlapluginInstallerScript
 	 */
 	public function postflight($type, $parent): bool
 	{
-		echo Text ::_('PLG_JOOMLAPLUGIN_INSTALLERSCRIPT_POSTFLIGHT');
+		echo Text ::_('PLG_CCM19INTEGRATION_INSTALLERSCRIPT_POSTFLIGHT');
 
 		return true;
 	}

@@ -1,6 +1,6 @@
 <?php /** @noinspection ALL */
 /**
- * @package    joomlaplugin
+ * @package    ccm19integration
  *
  * @author     Papoo Software & Media GmbH info@ccm19.de
  * @copyright  Papoo Software & Media GmbH
@@ -18,12 +18,12 @@ use Joomla\CMS\Uri\Uri;
 use Joomla\Component\Actionlogs\Administrator\Helper\ActionlogsHelper;
 
 /**
- * Joomlaplugin plugin.
+ * Ccm19integration plugin.
  *
- * @package   joomlaplugin
+ * @package   ccm19integration
  * @since     1.0.0
  */
-class plgSystemJoomlaplugin extends CMSPlugin
+class plgSystemCcm19integration extends CMSPlugin
 {
 	/**
 	 * Application object
@@ -64,8 +64,8 @@ class plgSystemJoomlaplugin extends CMSPlugin
 
 		$sample = $this->params->get('sample');
 		$sample = $this->getIntegrationUrl($sample);
-        if (!empty(JPluginHelper ::getPlugin('system', 'joomlaplugin') -> id)) {
-            $id = JPluginHelper::getPlugin('system','joomlaplugin')->id;
+        if (!empty(JPluginHelper ::getPlugin('system', 'ccm19integration') -> id)) {
+            $id = JPluginHelper::getPlugin('system','ccm19integration')->id;
         }
 
         $uri = Uri::getInstance();
@@ -73,7 +73,7 @@ class plgSystemJoomlaplugin extends CMSPlugin
 
 		if( $sample === null && ($current === $id)){
 
-			JFactory::getApplication()->enqueueMessage(JText::_('PLG_SYSTEM_JOOMLAPLUGIN_INVALID_SNIPPET'), 'error');
+			JFactory::getApplication()->enqueueMessage(JText::_('PLG_SYSTEM_CCM19INTEGRATION_INVALID_SNIPPET'), 'error');
 
 		}
 
@@ -97,15 +97,15 @@ class plgSystemJoomlaplugin extends CMSPlugin
 			$assetManager = $this->app->getDocument()->getWebAssetManager();
 
 			$assetManager->registerScript(
-				'plg.system.joomlaplugin',
-				'plg_system_joomlaplugin/insert.js',
+				'plg.system.ccm19integration',
+				'plg_system_ccm19integration/insert.js',
 				['version' => 'auto', 'relative' => true,'fetchpriority' => 'high','referrerpolicy' => 'origin'],
 				['async' => 'async'],
 				[]
 			);
 			$pars = $this->app->getDocument()->addScriptOptions('snippet',$refinedsample);
 
-			$assetManager->useScript('plg.system.joomlaplugin');
+			$assetManager->useScript('plg.system.ccm19integration');
 		}
 
 	}
