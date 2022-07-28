@@ -62,23 +62,27 @@ class plgSystemCcm19integration extends CMSPlugin
 	public function onAfterDispatch()
 	{
 
-		$sample = $this->params->get('sample');
-		$sample = $this->getIntegrationUrl($sample);
-        if (!empty(JPluginHelper ::getPlugin('system', 'ccm19integration') -> id)) {
-            $id = JPluginHelper::getPlugin('system','ccm19integration')->id;
-        }
-
-        $uri = Uri::getInstance();
-        $current =(int) $uri->getVar('extension_id');
-
-		if( $sample === null && ($current === $id)){
-
-			JFactory::getApplication()->enqueueMessage(JText::_('PLG_SYSTEM_CCM19INTEGRATION_INVALID_SNIPPET'), 'error');
+            //JFactory::getApplication()->enqueueMessage(JText::_('PLG_SYSTEM_CCM19INTEGRATION_INVALID_SNIPPET'), 'error');
 
 		}
 
-	}
 
+    public function onExtensionAfterSave($context, $table, $isNew): void
+    {
+
+        $sample = $this -> params -> get('sample');
+        $sample = $this -> getIntegrationUrl($sample);
+        if (!empty(JPluginHelper ::getPlugin('system', 'ccm19integration') -> id)) {
+            $id = JPluginHelper ::getPlugin('system', 'ccm19integration') -> id;
+        }
+
+        $uri = Uri ::getInstance();
+        $current = (int)$uri -> getVar('extension_id');
+
+        if ($sample === null && ($current === $id)) {
+            $arr = JFactory::getApplication()->getMessageQueue();
+        }
+    }
 	/**
 	 * onBeforeCompileHead
 	 *
@@ -92,9 +96,10 @@ class plgSystemCcm19integration extends CMSPlugin
 		$refinedsample =array('url' => $this->getIntegrationUrl($this->params->get('sample')));
 
 		$app = $this->app;
+
 		if (($app !== null) && $app -> isClient('site'))
 		{
-			$assetManager = $this->app->getDocument()->getWebAssetManager();
+			$assetManager = $app->getDocument()->getWebAssetManager();
 
 			$assetManager->registerScript(
 				'plg.system.ccm19integration',
@@ -103,8 +108,7 @@ class plgSystemCcm19integration extends CMSPlugin
 				['async' => 'async'],
 				[]
 			);
-			$pars = $this->app->getDocument()->addScriptOptions('snippet',$refinedsample);
-
+			$pars = $app->getDocument()->addScriptOptions('snippet',$refinedsample);
 			$assetManager->useScript('plg.system.ccm19integration');
 		}
 
