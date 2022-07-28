@@ -96,10 +96,9 @@ class plgSystemCcm19integration extends CMSPlugin
 		$refinedsample =array('url' => $this->getIntegrationUrl($this->params->get('sample')));
 
 		$app = $this->app;
-
 		if (($app !== null) && $app -> isClient('site'))
 		{
-			$assetManager = $app->getDocument()->getWebAssetManager();
+			$assetManager = $this->app->getDocument()->getWebAssetManager();
 
 			$assetManager->registerScript(
 				'plg.system.ccm19integration',
@@ -108,7 +107,8 @@ class plgSystemCcm19integration extends CMSPlugin
 				['async' => 'async'],
 				[]
 			);
-			$pars = $app->getDocument()->addScriptOptions('snippet',$refinedsample);
+			$pars = $this->app->getDocument()->addScriptOptions('snippet',$refinedsample);
+
 			$assetManager->useScript('plg.system.ccm19integration');
 		}
 
