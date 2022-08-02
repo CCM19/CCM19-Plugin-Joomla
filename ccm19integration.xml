@@ -37,7 +37,7 @@
 		<fields name="params">
 			<fieldset name="basic">
 				<field
-					name="sample"
+					name="snippet"
 					type="textarea"
 					default=""
 					label="PLG_SYSTEM_CCM19INTEGRATION_SAMPLE_LABEL"
