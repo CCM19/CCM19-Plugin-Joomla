@@ -9,7 +9,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<version>1.0</version>
 	<description>PLG_SYSTEM_CCM19INTEGRATION_XML_DESCRIPTION</description>
-	<namespace	path="src">Joomla\Plugin\System\Jommlaplugin</namespace>
+	<namespace	path="src">Joomla\Plugin\System\CCM19-Joomla-Plugin</namespace>
 	<!-- Scripts to run on installation -->
 	<scriptfile>script.php</scriptfile>
 
@@ -47,8 +47,4 @@
 		</fields>
 	</config>
 
-	<!-- Update servers -->
-	<updateservers>
-		<server type="extension" priority="1" name="ccm19integration">https://www.example.com/plg_ccm19.xml</server>
-	</updateservers>
 </extension>
