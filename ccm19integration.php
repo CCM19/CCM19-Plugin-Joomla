@@ -69,14 +69,14 @@ class plgSystemCcm19integration extends CMSPlugin
 			$id = JPluginHelper ::getPlugin('system', 'ccm19integration') -> id;
 		}
 
-		if($current === $id)
+		if ($current === $id)
 		{
 			if ($snippet === null )
 			{
 				$this -> app -> enqueueMessage(JText::_('PLG_SYSTEM_CCM19INTEGRATION_EMPTY_SNIPPET'), 'warning');
 				return;
 
-			}elseif($url === null){
+			}elseif ($url === null){
 				$this -> app -> enqueueMessage(JText ::_('PLG_SYSTEM_CCM19INTEGRATION_INVALID_SNIPPET'), 'error');
 			}
 		}
