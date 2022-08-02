@@ -51,38 +51,37 @@ class plgSystemCcm19integration extends CMSPlugin
 
 	protected $status = true;
 
-
-
 	/**
-	 * onAfterDispatch.
+	 * onBeforeRender
 	 *
 	 * @throws Exception
-	 * @since   1.0
+	 * @since 1.0
 	 */
-	public function onAfterDispatch()
-	{
+	public function onBeforeRender(){
 
+		$snippet = $this -> params -> get('snippet');
+		$url = $this -> getIntegrationUrl($snippet);
 
+		$uri = Uri ::getInstance();
+		$current = (int)$uri -> getVar('extension_id');
 
+		if (!empty(JPluginHelper ::getPlugin('system', 'ccm19integration') -> id)) {
+			$id = JPluginHelper ::getPlugin('system', 'ccm19integration') -> id;
 		}
 
+		if($current === $id)
+		{
+			if ($snippet === null )
+			{
+				$this -> app -> enqueueMessage(JText::_('PLG_SYSTEM_CCM19INTEGRATION_EMPTY_SNIPPET'), 'warning');
+				return;
 
-    public function onExtensionAfterSave($context, $table, $isNew): void
-    {
+			}elseif($url === null){
+				$this -> app -> enqueueMessage(JText ::_('PLG_SYSTEM_CCM19INTEGRATION_INVALID_SNIPPET'), 'error');
+			}
+		}
+	}
 
-        $sample = $this -> params -> get('sample');
-        $sample = $this -> getIntegrationUrl($sample);
-        if (!empty(JPluginHelper ::getPlugin('system', 'ccm19integration') -> id)) {
-            $id = JPluginHelper ::getPlugin('system', 'ccm19integration') -> id;
-        }
-
-        $uri = Uri ::getInstance();
-        $current = (int)$uri -> getVar('extension_id');
-
-        if ($sample === null && ($current === $id)) {
-            JFactory::getApplication()->enqueueMessage(JText::_('PLG_SYSTEM_CCM19INTEGRATION_INVALID_SNIPPET'), 'error');
-        }
-    }
 	/**
 	 * onBeforeCompileHead
 	 *
@@ -93,7 +92,7 @@ class plgSystemCcm19integration extends CMSPlugin
 	public function onBeforeCompileHead()
 	{
 
-		$refinedsample =array('url' => $this->getIntegrationUrl($this->params->get('sample')));
+		$refinedsample = array('url' => $this->getIntegrationUrl($this->params->get('snippet')));
 
 		$app = $this->app;
 		if (($app !== null) && $app -> isClient('site'))
