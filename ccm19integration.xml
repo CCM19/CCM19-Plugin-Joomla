@@ -9,7 +9,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<version>1.0</version>
 	<description>PLG_SYSTEM_CCM19INTEGRATION_XML_DESCRIPTION</description>
-	<namespace	path="src">Joomla\Plugin\System\CCM19-Joomla-Plugin</namespace>
+	<namespace	path="src">Joomla\Plugin\System\ccm19integration</namespace>
 	<!-- Scripts to run on installation -->
 	<scriptfile>script.php</scriptfile>
 
