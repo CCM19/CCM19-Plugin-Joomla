@@ -13,15 +13,18 @@ installdirs:
 	mkdir -p $(DESTINATION)media/$(NAME)
 
 clean:
-	rm -v $(DESTINATION)media/$(NAME)/js
+	rm -f $(DESTINATION)media/$(NAME)/js
 
-	rm -v $(DESTINATION)plugins/system/ccm19integration
+	rm -f $(DESTINATION)plugins/system/ccm19integration
 
-	rm -r $(DESTINATION)media/$(NAME)
+	rm -fr $(DESTINATION)media/$(NAME)
+
+	rm -fr $(CURDIR)/build/
 
 ccm19integration.zip:
 	mkdir -p "build"
 
-	rsync -r $(CURDIR)/ $(CURDIR)/build/ccm19integration/
+	rsync -a --exclude='build' --exclude='.*' $(CURDIR)/ $(CURDIR)/build/ccm19integration/
 
-	cd $(CURDIR)/build/ && zip -FSr ccm19integration.zip ccm19integration
+	cd  $(CURDIR)/build/ && zip -FSr ccm19integration.zip ccm19integration
+
