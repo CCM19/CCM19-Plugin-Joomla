@@ -49,7 +49,7 @@
 
 	<updateservers>
 		<!-- Note: No spaces or linebreaks allowed between the server tags -->
-		<server type="extension" name="CCM19 Integration Update Repo">https://github.com/CCM19/CCM19-Plugin-Joomla/tree/update/extension.xml</server>
+		<server type="extension" name="CCM19 Integration Update Repo">https://raw.githubusercontent.com/CCM19/CCM19-Plugin-Joomla/update/extension.xml</server>
 
 	</updateservers>
 </extension>
