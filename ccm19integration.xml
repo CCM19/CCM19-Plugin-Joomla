@@ -45,6 +45,6 @@
 		</fields>
 	</config>
 	<updateservers>
-		<server type="extension" priority="1" name="CCM19 Integration Updates">https://github.com/CCM19/CCM19-Plugin-Joomla/</server>
+		<server type="extension" priority="1" name="CCM19 Integration Updates">https://raw.githubusercontent.com/CCM19/CCM19-Plugin-Joomla/master/ccm19integration_update.xml</server>
 	</updateservers>
 </extension>
