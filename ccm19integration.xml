@@ -9,9 +9,7 @@
 	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
 	<version>1.0</version>
 	<description>PLG_SYSTEM_CCM19INTEGRATION_XML_DESCRIPTION</description>
-	<namespace	path="src">Joomla\Plugin\System\ccm19integration</namespace>
-	<!-- Scripts to run on installation -->
-	<scriptfile>script.php</scriptfile>
+	<namespace>Joomla\Plugin\System\ccm19integration</namespace>
 
 	<!-- Language files -->
 	<languages folder="language">
@@ -46,5 +44,7 @@
 			</fieldset>
 		</fields>
 	</config>
-
+	<updateservers>
+		<server type="extension" priority="1" name="CCM19 Integration Updates">https://github.com/CCM19/CCM19-Plugin-Joomla/</server>
+	</updateservers>
 </extension>
