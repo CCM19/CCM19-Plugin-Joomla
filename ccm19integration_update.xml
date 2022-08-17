@@ -1,0 +1,16 @@
+<updates>
+    <!-- example update
+    <update>
+        <name>CCM19 Integration</name>
+        <element>PLG_SYSTEM_CCM19INTEGRATION</element>
+        <type>plugin</type>
+        <version>1.0.1</version>
+        <downloads>
+            <downloadurl type="full" format="zip">https://github.com/CCM19/CCM19-Plugin-Joomla/releases</downloadurl>
+        </downloads>
+        <maintainer>Papoo Software &amp; Media GmbH</maintainer>
+        <maintainerurl>ccm19.de</maintainerurl>
+        <targetplatform name="joomla" version="4.*"/>
+        <php_minimum>7.1</php_minimum>
+    </update> -->
+</updates>
