@@ -1,7 +1,7 @@
 <updates>
     <update>
         <name>CCM19 Integration</name>
-        <element>PLG_SYSTEM_CCM19INTEGRATION</element>
+        <element>ccm19integration</element>
         <type>plugin</type>
         <folder>system</folder>
         <version>1.0.1</version>
