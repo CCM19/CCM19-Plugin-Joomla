@@ -17,6 +17,7 @@ use Joomla\CMS\Plugin\CMSPlugin;
 use Joomla\CMS\Uri\Uri;
 use Joomla\Component\Actionlogs\Administrator\Helper\ActionlogsHelper;
 
+
 /**
  * Ccm19integration plugin.
  *
@@ -52,6 +53,24 @@ class plgSystemCcm19integration extends CMSPlugin
 	protected $status = true;
 
 	/**
+	 * saves the code snippet
+	 *
+	 * @var null
+	 *
+	 * @since 1.2
+	 */
+	protected $snippet = null;
+
+
+	public function __construct(&$subject, $config = array())
+	{
+		parent::__construct($subject, $config);
+
+		$this -> snippet = $this->params->get('snippet');
+
+	}
+
+	/**
 	 * onBeforeRender
 	 *
 	 * @throws Exception
@@ -59,7 +78,8 @@ class plgSystemCcm19integration extends CMSPlugin
 	 */
 	public function onBeforeRender(){
 
-		$snippet = $this -> params -> get('snippet');
+		$snippet = $this->snippet;
+
 		$url = $this -> getIntegrationUrl($snippet);
 
 		$uri = Uri ::getInstance();
@@ -78,6 +98,7 @@ class plgSystemCcm19integration extends CMSPlugin
 
 			}elseif ($url === null){
 				$this -> app -> enqueueMessage(JText ::_('PLG_SYSTEM_CCM19INTEGRATION_INVALID_SNIPPET'), 'error');
+
 			}
 		}
 	}
@@ -92,12 +113,18 @@ class plgSystemCcm19integration extends CMSPlugin
 	public function onBeforeCompileHead()
 	{
 
-		$refinedsample = array('url' => $this->getIntegrationUrl($this->params->get('snippet')));
+		//$refinedsample = array('url' => $this->getIntegrationUrl($this->params->get('snippet')));
 
 		$app = $this->app;
-		if (($app !== null) && $app -> isClient('site'))
+		$snippet =$this->snippet;
+
+		if (($app !== null) && $app -> isClient('site')&&$snippet!=null)
 		{
-			$assetManager = $this->app->getDocument()->getWebAssetManager();
+
+			echo($snippet);
+
+			//outdated maybe for later use
+			/*$assetManager = $this->app->getDocument()->getWebAssetManager();
 
 			$assetManager->registerScript(
 				'plg.system.ccm19integration',
@@ -108,13 +135,14 @@ class plgSystemCcm19integration extends CMSPlugin
 			);
 			$pars = $this->app->getDocument()->addScriptOptions('snippet',$refinedsample);
 
-			$assetManager->useScript('plg.system.ccm19integration');
+			$assetManager->useScript('plg.system.ccm19integration');*/
 		}
 
 	}
 
+
 	/**
-	 * getIntegrationUrl
+	 * getIntegrationUrl returns null if the snippet is wrong
 	 *
 	 * @param $snippet
 	 *
