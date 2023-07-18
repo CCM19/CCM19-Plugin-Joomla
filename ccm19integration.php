@@ -101,43 +101,21 @@ class plgSystemCcm19integration extends CMSPlugin
 
 			}
 		}
+
 	}
-
-	/**
-	 * onBeforeCompileHead
-	 *
-	 * @return void
-	 *
-	 * @since 1.0
-	 */
-	public function onBeforeCompileHead()
-	{
-
-		//$refinedsample = array('url' => $this->getIntegrationUrl($this->params->get('snippet')));
+	public function onAfterRender(){
 
 		$app = $this->app;
-		$snippet =$this->snippet;
+		$scriptTag = $this->snippet;
 
-		if (($app !== null) && $app -> isClient('site')&&$snippet!=null)
+		if (($app !== null) && $app -> isClient('site')&&$scriptTag!=null)
 		{
+			$buffer = $app->getBody();
 
-			echo($snippet);
+			$modifiedBuffer = str_ireplace('<head>', '<head>' . $scriptTag, $buffer);
 
-			//outdated maybe for later use
-			/*$assetManager = $this->app->getDocument()->getWebAssetManager();
-
-			$assetManager->registerScript(
-				'plg.system.ccm19integration',
-				'plg_system_ccm19integration/insert.js',
-				['version' => 'auto', 'relative' => true,'fetchpriority' => 'high','referrerpolicy' => 'origin'],
-				['async' => 'async'],
-				[]
-			);
-			$pars = $this->app->getDocument()->addScriptOptions('snippet',$refinedsample);
-
-			$assetManager->useScript('plg.system.ccm19integration');*/
+			$app->setBody($modifiedBuffer);
 		}
-
 	}
 
 
