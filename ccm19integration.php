@@ -14,6 +14,7 @@ use Joomla\CMS\Application\CMSApplication;
 use Joomla\CMS\HTML\HTMLHelper;
 use Joomla\CMS\Language\Text;
 use Joomla\CMS\Plugin\CMSPlugin;
+use Joomla\CMS\Plugin\PluginHelper;
 use Joomla\CMS\Uri\Uri;
 use Joomla\Component\Actionlogs\Administrator\Helper\ActionlogsHelper;
 
@@ -66,7 +67,7 @@ class plgSystemCcm19integration extends CMSPlugin
 	{
 		parent::__construct($subject, $config);
 
-		$this -> snippet = $this->params->get('snippet');
+		$this->snippet = $this->params->get('snippet');
 
 	}
 
@@ -74,31 +75,38 @@ class plgSystemCcm19integration extends CMSPlugin
 	 * onBeforeRender
 	 *
 	 * @throws Exception
-	 * @since 1.0
+	 * @since 1.3
 	 */
-	public function onBeforeRender(){
+	public function onBeforeRender()
+	{
 
 		$snippet = $this->snippet;
 
-		$url = $this -> getIntegrationUrl($snippet);
+		$url = $this->getIntegrationUrl($snippet);
 
-		$uri = Uri ::getInstance();
-		$current = (int)$uri -> getVar('extension_id');
+		$uri     = Uri::getInstance();
+		$current = (int) $uri->getVar('extension_id');
 
-		if (!empty(JPluginHelper ::getPlugin('system', 'ccm19integration') -> id)) {
-			$id = JPluginHelper ::getPlugin('system', 'ccm19integration') -> id;
+
+		$plugin = PluginHelper::getPlugin('system', 'ccm19integration');
+
+		if (!empty($plugin))
+		{
+			$id = $plugin->id;
 		}
 
 		if ($current === $id)
 		{
-			if ($snippet === null )
+			if ($snippet === null)
 			{
-				$this -> app -> enqueueMessage(JText::_('PLG_SYSTEM_CCM19INTEGRATION_EMPTY_SNIPPET'), 'warning');
+				$this->app->enqueueMessage(Text::_('PLG_SYSTEM_CCM19INTEGRATION_EMPTY_SNIPPET'), 'warning');
+
 				return;
 
-			}elseif ($url === null){
-				$this -> app -> enqueueMessage(JText ::_('PLG_SYSTEM_CCM19INTEGRATION_INVALID_SNIPPET'), 'error');
-
+			}
+			elseif ($url === null)
+			{
+				$this->app->enqueueMessage(Text::_('PLG_SYSTEM_CCM19INTEGRATION_INVALID_SNIPPET'), 'error');
 			}
 		}
 
@@ -107,14 +115,15 @@ class plgSystemCcm19integration extends CMSPlugin
 	/**
 	 *onAfterRender
 	 *
-	 * @since 1.2
+	 * @since 1.3
 	 */
-	public function onAfterRender(){
+	public function onAfterRender()
+	{
 
-		$app = $this->app;
+		$app       = $this->app;
 		$scriptTag = $this->snippet;
 
-		if (($app !== null) && $app -> isClient('site')&&$scriptTag!=null)
+		if (($app !== null) && $app->isClient('site') && $scriptTag != null)
 		{
 			$buffer = $app->getBody();
 
@@ -132,18 +141,21 @@ class plgSystemCcm19integration extends CMSPlugin
 	 *
 	 * @return string|null
 	 *
-	 * @since 1.0
+	 * @since 1.3
 	 */
 	private function getIntegrationUrl($snippet): ?string
 	{
 
-		if ( ! empty( $snippet ) ) {
+		if (!empty($snippet))
+		{
 			$match = [];
-			preg_match( '/\bsrc=([\'"])((?>[^"\'?#]|(?!\1)["\'])*\/(ccm19|app)\.js\?(?>[^"\']|(?!\1).)*)\1/i', $snippet, $match );
-			if ( $match and $match[2] ) {
-				return html_entity_decode( $match[2], ENT_HTML401 | ENT_QUOTES, 'UTF-8' );
+			preg_match('/\bsrc=([\'"])((?>[^"\'?#]|(?!\1)["\'])*\/(ccm19|app)\.js\?(?>[^"\']|(?!\1).)*)\1/i', $snippet, $match);
+			if ($match and $match[2])
+			{
+				return html_entity_decode($match[2], ENT_HTML401 | ENT_QUOTES, 'UTF-8');
 			}
 		}
+
 		return null;
 	}
 }
